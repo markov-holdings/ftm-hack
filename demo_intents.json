@@ -1,0 +1,26 @@
+{
+    "Intents": [
+        {
+            "name": "order_flowers",
+            "description": "Intent to order flowers",
+            "utterances": [
+                {"utterance": "I would like to order"},
+                {"utterance": "I want to buy"},
+                {"utterance": "I want to purchase something"},
+            ],
+            "slots": [
+                {"slot": "What kind of flowers do you want?"}
+            ]
+        },
+        {
+            "name": "get_promo_codes",
+            "description": "Intent to ask about promotions",
+            "utterances": [
+                {"utterance": "Any promotions right now"},
+                {"utterance": "Do you offer discounts"},
+                {"utterance": "Is there a promo code"},
+                {"utterance": "Are there any sales now"}
+            ]
+        }
+    ]
+}
