@@ -1,0 +1,7 @@
+{
+
+    "aws_region": "us-west-2",
+
+    "aws_lex_bot_name": "roxie",
+    "aws_lex_role_arn": "arn:aws:iam::291406351574:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots"
+}
