@@ -225,8 +225,8 @@ if __name__ == "__main__":
                                 },
                                 {
                                     "name": "faq intent",
-                                    "utterances": [{"content":"Can I buy some flowers?"}, {"content":"I want to buy flowers"}],
-                                    "slots": [{"content":"What kind of flowers do u want?"}],
+                                    "utterances": [{"content":"How long is shipping time"}, {"content":"How long will it take to ship"}],
+                                    "slots": [{"content":"Shipping time for now is estimated to be 2 weeks"}],
                                 }
                             ]
                             }

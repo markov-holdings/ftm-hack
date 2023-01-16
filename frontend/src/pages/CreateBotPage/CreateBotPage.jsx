@@ -179,7 +179,7 @@ export default function CreateBotPage() {
                   required
                   fullWidth
                   id="utterance"
-                  label="Third Utterance for intent 1"
+                  label="Response"
                   name="utterance 1"
                   autoComplete="utterance 1"
                 />
@@ -240,7 +240,7 @@ export default function CreateBotPage() {
                   required
                   fullWidth
                   id="utterance"
-                  label="Third Utterance for intent 2"
+                  label="Response"
                   name="utterance 2"
                   autoComplete="utterance 1"
                 />
@@ -258,12 +258,7 @@ export default function CreateBotPage() {
                 </LocalizationProvider>
               </Grid> */}
               
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="9i Holdings would not be liable for the bot performance"
-                />
-              </Grid>
+              
             </Grid>
             <div>
               <input
@@ -280,7 +275,7 @@ export default function CreateBotPage() {
                   <b>Bot is being created</b>
                   <p>Intent and Utterances has been successfully sent to the database.</p>
                   <Grid item>
-                <Link href="../user" variant="body2">
+                <Link href="../user/videos" variant="body2">
                   {"Acknowledged"}
                 </Link>
               </Grid>

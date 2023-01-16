@@ -25,32 +25,32 @@
                     "intent": 1
                 }
             ],
-            "name": "purchase intent",
-            "description": null
+            "name": "purchaseIntent",
+            "description": "buy flowers intent"
         },
         {
             "chatbot": 2,
             "utterances": [
                 {
                     "id": 3,
-                    "content": "Can I buy some flowers?",
+                    "content": "How long is shipping time",
                     "intent": 2
                 },
                 {
                     "id": 4,
-                    "content": "I want to buy flowers",
+                    "content": "How long will it take to ship",
                     "intent": 2
                 }
             ],
             "slots": [
                 {
                     "id": 2,
-                    "content": "What kind of flowers do u want?",
+                    "content": "Shipping time for now is estimated to be 2 weeks.",
                     "intent": 2
                 }
             ],
-            "name": "faq intent",
-            "description": null
+            "name": "shippingIntent",
+            "description": "intent for estimated shipping time"
         }
     ],
     "name": "FloristBot",

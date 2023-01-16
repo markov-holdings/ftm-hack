@@ -11,7 +11,7 @@ class LexFactory:
     def __init__(self, input):
         self.config = {
             "aws_region": "us-west-2",
-            "aws_lex_bot_name": "florist-bot",
+            "aws_lex_bot_name": "flower-shops",
             "aws_lex_role_arn": "arn:aws:iam::291406351574:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots",
         }
  
@@ -42,7 +42,7 @@ class LexFactory:
             raise Exception("Bot is not created yet!")
         else:
             response = self.lex.create_bot_locale(
-                botId = self.aws_lex_bot_id,
+                botId = self.aws_bot_id,
                 botVersion = "DRAFT",
                 localeId = "en_US",
                 nluIntentConfidenceThreshold=0.40,
@@ -56,7 +56,7 @@ class LexFactory:
         for intent in self.input["chatbot_intents"]:
             name = intent["name"]
             description = intent["description"]
-            utterances = [d["content"] for d in intent["utterances"]]
+            utterances = [{"utterance": d["content"]} for d in intent["utterances"]]
             #slots = intent["slots"]
             
             response = self.lex.create_intent(
@@ -80,5 +80,10 @@ if __name__ == "__main__":
     f.close()
     
     factory = LexFactory(data)
-    factory.create_bot().create_locale().create_intents()
+    factory.create_bot()
+    time.sleep(1)
+    factory.create_locale()
+    time.sleep(1)
+    factory.create_intents()
+    time.sleep(1)
     print("Bot created successfully")
