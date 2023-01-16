@@ -245,6 +245,11 @@ export default function CreateBotPage() {
                 content={<>
                   <b>Bot is being created</b>
                   <p>Intent and Utterances has been successfully sent to the database.</p>
+                  <Grid item>
+                <Link href="../user" variant="body2">
+                  {"Acknowledged"}
+                </Link>
+              </Grid>
                 </>}
                 handleClose={togglePopup}
               />}
