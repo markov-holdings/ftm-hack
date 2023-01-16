@@ -11,6 +11,10 @@ const videos = [
     type: "facebook",
     src: "https://www.youtube.com/embed/2_aFCSXMA2o",
   },
+  {
+    type: "ecommerce",
+    src: "https://www.youtube.com/embed/mk3Ub9jDuag",
+  },
 ];
 
 const VideoPage = () => {
