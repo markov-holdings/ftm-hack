@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions, authentication
-from .models import Chatbot
-from .serializers import ChatbotSerializer
+from .models import Chatbot, Intent, Utterance, Slot
+from .serializers import ChatbotSerializer, IntentSerializer, UtteranceSerializer, SlotSerializer
 
 ## CRUD for Chatbot model
 

@@ -216,10 +216,23 @@ if __name__ == "__main__":
                          data={
                              "name": "FloristBot",
                              "social_media_type": "instagram",
-                             "content":"absdbajaksbdsa",
+                             "description":"Point-of-sales bot for buying flowers",
+                             "chatbot_intents": [
+                                {
+                                    "name": "purchase intent",
+                                    "utterances": [{"content":"Can I buy some flowers?"}, {"content":"I want to buy flowers"}],
+                                    "slots": [{"content":"What kind of flowers do u want?"}],
+                                },
+                                {
+                                    "name": "faq intent",
+                                    "utterances": [{"content":"Can I buy some flowers?"}, {"content":"I want to buy flowers"}],
+                                    "slots": [{"content":"What kind of flowers do u want?"}],
+                                }
+                            ]
                             }
                          ) 
     #'''
+
     # update bot 
     #data = client.update("http://localhost:8000/api/chatbot/7/update/", data={"name": "New bot name", "social_media_type":"instagram", "content":"asdfgh"})
     

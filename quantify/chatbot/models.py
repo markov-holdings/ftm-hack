@@ -12,18 +12,25 @@ class Chatbot(models.Model):
     )
 
     owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE, editable=False)
-    name = models.CharField(max_length=50)
     social_media_type = models.CharField(max_length=20, choices=SOCIAL_MEDIA_TYPE_CHOICES)
     
     # AWS Lex fields
-    #dataPrivacy = models.BooleanField(default=False)
-    #idleSessionTTLInSeconds = models.IntegerField(default=300)
-    #roleArn = models.CharField(max_length=50, default="")
-    #AWSBotId = models.CharField(max_length=50, default="") 
-    #AWSBotStatus = models.BooleanField(default=False)
-    
-    # bot intents 
-    content = models.TextField(blank=True, null=True)
+    name = models.CharField(max_length=50)
+    description = models.TextField(blank=True, null=True)
 
-    
+    aws_bot_id = models.CharField(max_length=50, default=-1)
+    bot_status = models.BooleanField(default=False) # is bot available
+    locale_status = models.BooleanField(default=False) # is bot built
 
+class Intent(models.Model):
+    chatbot = models.ForeignKey(Chatbot, null=True, on_delete=models.CASCADE, editable=True, related_name='chatbot_intents')
+    name = models.CharField(max_length=50)
+    description = models.TextField(blank=True, null=True)
+
+class Utterance(models.Model):
+    intent = models.ForeignKey(Intent, null=True, on_delete=models.CASCADE, editable=True, related_name="utterances")
+    content = models.TextField(blank=False)
+
+class Slot(models.Model):
+    intent = models.ForeignKey(Intent, null=True, on_delete=models.CASCADE, editable=True, related_name="slots")
+    content = models.TextField(blank=False)
