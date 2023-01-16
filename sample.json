@@ -1,0 +1,62 @@
+{
+    "url": "http://127.0.0.1:8000/api/chatbot/2/",
+    "owner": {
+        "id": 1
+    },
+    "chatbot_intents": [
+        {
+            "chatbot": 2,
+            "utterances": [
+                {
+                    "id": 1,
+                    "content": "Can I buy some flowers?",
+                    "intent": 1
+                },
+                {
+                    "id": 2,
+                    "content": "I want to buy flowers",
+                    "intent": 1
+                }
+            ],
+            "slots": [
+                {
+                    "id": 1,
+                    "content": "What kind of flowers do u want?",
+                    "intent": 1
+                }
+            ],
+            "name": "purchaseIntent",
+            "description": "buy flowers intent"
+        },
+        {
+            "chatbot": 2,
+            "utterances": [
+                {
+                    "id": 3,
+                    "content": "How long is shipping time",
+                    "intent": 2
+                },
+                {
+                    "id": 4,
+                    "content": "How long will it take to ship",
+                    "intent": 2
+                }
+            ],
+            "slots": [
+                {
+                    "id": 2,
+                    "content": "Shipping time for now is estimated to be 2 weeks.",
+                    "intent": 2
+                }
+            ],
+            "name": "shippingIntent",
+            "description": "intent for estimated shipping time"
+        }
+    ],
+    "name": "FloristBot",
+    "description": "Point-of-sales bot for buying flowers",
+    "social_media_type": "instagram",
+    "aws_bot_id": "-1",
+    "bot_status": false,
+    "locale_status": false
+}
