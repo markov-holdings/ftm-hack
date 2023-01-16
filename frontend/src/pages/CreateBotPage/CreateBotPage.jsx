@@ -133,14 +133,14 @@ export default function CreateBotPage() {
                   autoComplete="intent1"
                 />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item xs={1}>
                 <TextField
                   disabled
                   id="outlined-disabled"
-                  label="1"
+                  label=""
                 />
               </Grid>
-              <Grid item xs={10}>
+              <Grid item xs={11}>
                 <TextField
                   required
                   fullWidth
@@ -150,19 +150,36 @@ export default function CreateBotPage() {
                   autoComplete="utterance 1"
                 />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item xs={1}>
                 <TextField
                   disabled
                   id="outlined-disabled"
-                  label="1"
+                  label=""
                 />
               </Grid>
-              <Grid item xs={10}>
+              <Grid item xs={11}>
                 <TextField
                   required
                   fullWidth
                   id="utterance"
                   label="Second Utterance for intent 1"
+                  name="utterance 1"
+                  autoComplete="utterance 1"
+                />
+              </Grid>
+                            <Grid item xs={1}>
+                <TextField
+                  disabled
+                  id="outlined-disabled"
+                  label=""
+                />
+              </Grid>
+              <Grid item xs={11}>
+                <TextField
+                  required
+                  fullWidth
+                  id="utterance"
+                  label="Third Utterance for intent 1"
                   name="utterance 1"
                   autoComplete="utterance 1"
                 />
@@ -177,14 +194,14 @@ export default function CreateBotPage() {
                   autoComplete="intent2"
                 />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item xs={1}>
                 <TextField
                   disabled
                   id="outlined-disabled"
-                  label="2"
+                  label=""
                 />
               </Grid>
-              <Grid item xs={10}>
+              <Grid item xs={11}>
                 <TextField
                   required
                   fullWidth
@@ -194,19 +211,36 @@ export default function CreateBotPage() {
                   autoComplete="utterance 1"
                 />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item xs={1}>
                 <TextField
                   disabled
                   id="outlined-disabled"
-                  label="2"
+                  label=""
                 />
               </Grid>
-              <Grid item xs={10}>
+              <Grid item xs={11}>
                 <TextField
                   required
                   fullWidth
                   id="utterance"
                   label="Second Utterance for intent 2"
+                  name="utterance 2"
+                  autoComplete="utterance 1"
+                />
+              </Grid>
+                            <Grid item xs={1}>
+                <TextField
+                  disabled
+                  id="outlined-disabled"
+                  label=""
+                />
+              </Grid>
+              <Grid item xs={11}>
+                <TextField
+                  required
+                  fullWidth
+                  id="utterance"
+                  label="Third Utterance for intent 2"
                   name="utterance 2"
                   autoComplete="utterance 1"
                 />
