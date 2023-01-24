@@ -3,14 +3,13 @@ from rest_framework.response import Response
 from .models import Chatbot
 from .serializers import ChatbotSerializer
 from .services import LexFactoryService
-
-from django.forms.models import model_to_dict
-
+from .permissions import IsOwner
 
 ## CRUD for Chatbot model
 
 class ChatbotListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = ChatbotSerializer
+    permission_classes = [IsOwner]
 
     def get_queryset(self):
         if self.request.user.is_staff:
@@ -25,6 +24,7 @@ class ChatbotListCreateAPIView(generics.ListCreateAPIView):
 
 class ChatbotDetailAPIView(generics.RetrieveAPIView):
     serializer_class = ChatbotSerializer    
+    permission_classes = [IsOwner]
 
     def get_queryset(self):
         queryset = Chatbot.objects.all()
@@ -33,6 +33,7 @@ class ChatbotDetailAPIView(generics.RetrieveAPIView):
 class ChatbotUpdateAPIView(generics.UpdateAPIView):
     queryset = Chatbot.objects.all()
     serializer_class = ChatbotSerializer    
+    permission_classes = [IsOwner]
     lookup_field = "pk"
 
     def perform_update(self, serializer):
@@ -42,6 +43,7 @@ class ChatbotUpdateAPIView(generics.UpdateAPIView):
 class ChatbotDeleteAPIView(generics.DestroyAPIView):
     queryset = Chatbot.objects.all()
     serializer_class = ChatbotSerializer    
+    permission_classes = [IsOwner]
     lookup_field = "pk"
     
     def perform_destroy(self, instance):
@@ -51,6 +53,7 @@ class ChatbotDeleteAPIView(generics.DestroyAPIView):
 class ChatbotBuildAPIView(generics.GenericAPIView):
     queryset = Chatbot.objects.all()
     serializer_class = ChatbotSerializer    
+    permission_classes = [IsOwner]
     lookup_field = "pk"
 
     def get_object(self, pk):
