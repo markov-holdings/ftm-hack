@@ -10,6 +10,7 @@ import "./index.scss";
 const tabs = [
   { href: "/user", name: "Home" },
   { href: "/user/videos", name: "Video" },
+  { href: "/user/managebot", name: "Manage Bot"},
   { href: "/user/createBot", name: "Bot Creation" },
 
 ];
