@@ -1,9 +1,8 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import NavMenu from "../../components/NavMenu";
-import user1pic from "../../images/user1pic.png";
-import user2pic from "../../images/user2pic.png";
-import user3pic from "../../images/user3pic.png";
+import clothing from "../../images/bot-clothing.jpg";
+import flower from "../../images/bot-flower.jpg";
 
 import "./index.scss";
 
@@ -15,33 +14,29 @@ const tabs = [
 
 ];
 
-const supportServices = [
+const botServices = [
   {
-    img: user1pic,
-    text: "FaceBook messenger",
+    img: flower,
+    text: "Bot for selling flowers",
   },
   {
-    img: user2pic,
-    text: "Instagram messenger",
-  },
-  {
-    img: user3pic,
-    text: "Web messenger",
+    img: clothing,
+    text: "Bot for selling clothings",
   },
 ];
 
-const LoggedInPage = () => {
+const ManageBotPage = () => {
   const location = useLocation();
 
   return (
     <>
       <NavMenu tabs={tabs} />
-      {location.pathname === "/user" ? (
-        <div className="loggedInPage">
-          <div className="loggedInPageTitle">Learn more about</div>
-          <div className="loggedInPageCards">
-            {supportServices.map((service) => (
-              <div className="loggedInPageCard">
+      {location.pathname === "/user/managebot" ? (
+        <div className="manageBotPage">
+          <div className="manageBotPageTitle">Click cards to know mroe or edit the bots</div>
+          <div className="manageBotPageCards">
+            {botServices.map((service) => (
+              <div className="manageBotPageCard">
                 <img src={service.img} alt={service.text} />
                 <div>{service.text}</div>
               </div>
@@ -55,4 +50,4 @@ const LoggedInPage = () => {
   );
 };
 
-export default LoggedInPage;
+export default ManageBotPage;

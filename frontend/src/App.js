@@ -6,6 +6,7 @@ import SignUpPage from "./pages/SignUpPage";
 import LandingPage from "./pages/LandingPage";
 import CreateBotPage from "./pages/CreateBotPage/CreateBotPage";
 import VideoPage from "./pages/VideoPage";
+import ManageBotPage from "./pages/ManageBotPage";
 
 
 // Add redirect upon not log in.
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="user" element={<LoggedInPage />}>
           <Route path="videos" element={<VideoPage />} />
+          <Route path = "managebot" element = {<ManageBotPage/>}/>
           <Route path="createBot" element={<CreateBotPage />} />
         </Route>
         <Route path="signIn" element={<SignInPage />} />
