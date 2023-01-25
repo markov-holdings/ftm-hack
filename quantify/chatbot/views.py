@@ -102,7 +102,7 @@ class ChatbotBuildAPIView(generics.GenericAPIView):
 
             intent_data["slots"] = []    
             for slot in intent.slots.all():
-                intent_data["slots"].append({"slot" : slot.content})
+                intent_data["slots"].append({"name": slot.name, "content" : slot.content, "options": slot.options})
 
             input["chatbot_intents"].append(intent_data)
 

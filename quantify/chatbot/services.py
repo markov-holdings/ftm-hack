@@ -32,13 +32,13 @@ class LexFactoryService:
         # TODO: change to event based await instead of time.sleep 
 
         self.create_bot()
-        time.sleep(2)
+        time.sleep(3)
 
         self.create_locale()
-        time.sleep(2)
+        time.sleep(3)
 
         self.create_intents()
-        time.sleep(2)
+        time.sleep(3)
 
         return self
 
@@ -100,11 +100,8 @@ class LexFactoryService:
                 if elicit_slot == None:
                     elicit_slot = slot_name
 
-                ## testing
-                slot["options"] = ["small", "medium", "large"]
-                ## end testing
 
-                enum_options = slot["options"]
+                enum_options = slot["options"].replace(" ", "").split(",")
                 resp = self.lex.create_slot_type(
                     botId = self.aws_bot_id,
                     localeId="en_US",
@@ -156,6 +153,9 @@ class LexFactoryService:
                             },
                         }                                                                  
                     },
+                    #intentClosingSetting={
+                    #    "closingResponse": {"messageGroups": [{"message": {"plainTextMessage": {"value": "Thanks, it's confirmed."}}}]},
+                    #},
                     slotPriorities=slot_priorities
                 )             
                 

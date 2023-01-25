@@ -79,11 +79,7 @@ class LexFactory:
                 if elicit_slot == None:
                     elicit_slot = slot_name
 
-                ## testing
-                slot["options"] = ["small", "medium", "large"]
-                ## end testing
-
-                enum_options = slot["options"]
+                enum_options = slot["options"].replace(" ", "").split(",")
                 resp = self.lex.create_slot_type(
                     botId = self.aws_bot_id,
                     localeId="en_US",

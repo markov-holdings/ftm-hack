@@ -23,12 +23,14 @@
                     "id": 1,
                     "name": "flowerType",
                     "content": "What kind of flowers do u want?",
+                    "options": "roses, lilies, orchids",
                     "intent": 1
                 },
                 {
                     "id": 2,
                     "name": "deliveryTime",
-                    "content": "When to deliver your {flowerType}?",
+                    "content": "What time to deliver your {flowerType}?",
+                    "options": "morning, afternoon, night",
                     "intent": 1
                 }
             ],
@@ -54,6 +56,7 @@
                     "id": 2,
                     "name": "shipping",
                     "content": "Where are you shipping to?",
+                    "options": "Singapore, Malaysia, Thailand",
                     "intent": 2
                 }
             ],
