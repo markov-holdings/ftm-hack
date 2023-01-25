@@ -21,7 +21,14 @@
             "slots": [
                 {
                     "id": 1,
+                    "name": "flowerType",
                     "content": "What kind of flowers do u want?",
+                    "intent": 1
+                },
+                {
+                    "id": 2,
+                    "name": "deliveryTime",
+                    "content": "When to deliver your {flowerType}?",
                     "intent": 1
                 }
             ],
@@ -45,7 +52,8 @@
             "slots": [
                 {
                     "id": 2,
-                    "content": "Shipping time for now is estimated to be 2 weeks.",
+                    "name": "shipping",
+                    "content": "Where are you shipping to?",
                     "intent": 2
                 }
             ],
