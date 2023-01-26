@@ -21,7 +21,16 @@
             "slots": [
                 {
                     "id": 1,
+                    "name": "flowerType",
                     "content": "What kind of flowers do u want?",
+                    "options": "roses, lilies, orchids",
+                    "intent": 1
+                },
+                {
+                    "id": 2,
+                    "name": "deliveryTime",
+                    "content": "What time to deliver your {flowerType}?",
+                    "options": "morning, afternoon, night",
                     "intent": 1
                 }
             ],
@@ -45,7 +54,9 @@
             "slots": [
                 {
                     "id": 2,
-                    "content": "Shipping time for now is estimated to be 2 weeks.",
+                    "name": "shipping",
+                    "content": "Where are you shipping to?",
+                    "options": "Singapore, Malaysia, Thailand",
                     "intent": 2
                 }
             ],

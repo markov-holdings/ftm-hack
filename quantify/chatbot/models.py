@@ -16,7 +16,7 @@ class Chatbot(models.Model):
     
     # AWS Lex fields
     name = models.CharField(max_length=50)
-    description = models.TextField(blank=True, null=True)
+    description = models.TextField(default="no description given")
 
     aws_bot_id = models.CharField(max_length=50, default=-1)
     bot_status = models.BooleanField(default=False) # is bot available
@@ -25,12 +25,14 @@ class Chatbot(models.Model):
 class Intent(models.Model):
     chatbot = models.ForeignKey(Chatbot, null=True, on_delete=models.CASCADE, editable=True, related_name='chatbot_intents')
     name = models.CharField(max_length=50)
-    description = models.TextField(blank=True, null=True)
+    description = models.TextField(default="no description given")
 
 class Utterance(models.Model):
     intent = models.ForeignKey(Intent, null=True, on_delete=models.CASCADE, editable=True, related_name="utterances")
     content = models.TextField(blank=False)
 
 class Slot(models.Model):
+    name = models.TextField(blank=False)
     intent = models.ForeignKey(Intent, null=True, on_delete=models.CASCADE, editable=True, related_name="slots")
     content = models.TextField(blank=False)
+    options = models.TextField(blank=False)

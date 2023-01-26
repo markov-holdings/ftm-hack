@@ -8,7 +8,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import {Box} from '@mui/material';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -18,7 +18,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Popup from './Popup';
 
 function Copyright(props) {
@@ -65,15 +65,92 @@ const theme = createTheme();
 
 
 export default function CreateBotPage() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      name: data.get('name'),
-      password: data.get('password'),
+
+  const URL = 'http://127.0.0.1:8000/api/chatbot/'
+
+  const postData = async (event) => {
+    const response = await fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({"name": name,
+                            "social_media_type": "instagram",
+                            "description":description,
+                            "chatbot_intents": [
+                              {
+                                  "name": firstIntent,
+                                  "utterances": [{"content":firstUtteranceFirstIntent}, {"content":secondUtteranceFirstIntent}],
+                                  "slots": [{"content":firstResponse}],
+                              },
+                              {
+                                  "name": secondIntent,
+                                  "utterances": [{"content":firstUtteranceSecondIntent}, {"content":secondUtteranceSecondIntent}],
+                                  "slots": [{"content":secondResponse}],
+                              }
+                            ]})
     });
-  };
+
+    const data = await response.json
+    if (response.ok) {
+            console.log(data)
+        } else {
+            console.log('Failed Network Request')
+        }
+    return response.json();
+  }
+  
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   const new_request = new Request(
+  //     `http://127.0.0.1:8000/api/chatbot/`, 
+  //     {
+  //         body: JSON.stringify({firstIntent, 
+  //                               secondIntent,
+  //                               firstUtteranceFirstIntent,
+  //                               secondUtteranceFirstIntent,
+  //                               firstResponse,
+  //                               firstUtteranceSecondIntent,
+  //                               secondUtteranceSecondIntent,
+  //                               secondResponse}),
+  //         headers:{
+  //             'Content-Type':'Application/Json'
+  //         },
+  //         method: 'POST'
+  //     }
+  //   );
+
+  //   const response = await fetch(new_request);
+
+  //   const data = await response.json()
+
+  //   if (response.ok) {
+  //       console.log(data)
+  //   } else {
+  //       console.log('Failed Network Request')
+  //   }
+  // };
+  
+
+
   const [isOpen, setIsOpen] = useState(false);
+
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+
+  const [firstIntent, setFirstIntent] = useState('');
+  const [secondIntent, setSecondIntent] = useState('');
+  const [firstUtteranceFirstIntent, setFirstUtteranceFirstIntent] = useState('');
+  const [secondUtteranceFirstIntent, setSecondUtteranceFirstIntent] = useState('');
+
+  const [firstResponse, setFirstResponse] = useState('');
+  const [firstUtteranceSecondIntent, setFirstUtteranceSecondIntent] = useState('');
+  const [secondUtteranceSecondIntent, setSecondUtteranceSecondIntent] = useState('');
+  const [secondResponse, setSecondResponse] = useState('');
+
+
+  
+
  
   const togglePopup = () => {
     setIsOpen(!isOpen);
@@ -120,9 +197,35 @@ export default function CreateBotPage() {
             </div>
         </div> */}
           
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={postData} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
-
+            <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="name"
+                  label="Name"
+                  name="name"
+                  autoComplete="name"
+                  onChange = {(e) => setName(e.target.value)}
+                />
+              </Grid>
+            <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="description"
+                  label="Description"
+                  name="description"
+                  autoComplete="description"
+                  onChange = {(e) => setDescription(e.target.value)}
+                  />
+                </Grid>
+              <Grid item xs={12}>
+                {/* <p>Gender: </p> */}
+                <input type="radio" value="facebook" name="social media" /> Facebook  
+                <input type="radio" value="instagram" name="social media" /> Instagram  
+              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
@@ -131,6 +234,7 @@ export default function CreateBotPage() {
                   label="First Intent"
                   name="intent1"
                   autoComplete="intent1"
+                  onChange = {(e) => setFirstIntent(e.target.value)}
                 />
               </Grid>
               <Grid item xs={1}>
@@ -148,6 +252,7 @@ export default function CreateBotPage() {
                   label="First Utterance for intent 1"
                   name="utterance 1"
                   autoComplete="utterance 1"
+                  onChange = {(e) => setFirstUtteranceFirstIntent(e.target.value)}
                 />
               </Grid>
               <Grid item xs={1}>
@@ -165,6 +270,7 @@ export default function CreateBotPage() {
                   label="Second Utterance for intent 1"
                   name="utterance 1"
                   autoComplete="utterance 1"
+                  onChange = {(e) => setSecondUtteranceFirstIntent(e.target.value)}
                 />
               </Grid>
                             <Grid item xs={1}>
@@ -182,6 +288,7 @@ export default function CreateBotPage() {
                   label="Response"
                   name="utterance 1"
                   autoComplete="utterance 1"
+                  onChange = {(e) => setFirstResponse(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -192,6 +299,7 @@ export default function CreateBotPage() {
                   label="Second Intent"
                   name="intent2"
                   autoComplete="intent2"
+                  onChange = {(e) => setSecondIntent(e.target.value)}
                 />
               </Grid>
               <Grid item xs={1}>
@@ -209,6 +317,7 @@ export default function CreateBotPage() {
                   label="First Utterance for intent 2"
                   name="utterance 1"
                   autoComplete="utterance 1"
+                  onChange = {(e) => setFirstUtteranceSecondIntent(e.target.value)}
                 />
               </Grid>
               <Grid item xs={1}>
@@ -226,6 +335,7 @@ export default function CreateBotPage() {
                   label="Second Utterance for intent 2"
                   name="utterance 2"
                   autoComplete="utterance 1"
+                  onChange = {(e) => setSecondUtteranceSecondIntent(e.target.value)}
                 />
               </Grid>
                             <Grid item xs={1}>
@@ -243,6 +353,7 @@ export default function CreateBotPage() {
                   label="Response"
                   name="utterance 2"
                   autoComplete="utterance 1"
+                  onChange = {(e) => setSecondResponse(e.target.value)}
                 />
               </Grid>
               {/* <Grid item xs={12}>

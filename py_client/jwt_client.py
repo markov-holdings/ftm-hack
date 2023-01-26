@@ -191,6 +191,11 @@ class JWTClient:
         headers = self.get_headers()
         r = requests.put(endpoint, headers=headers, json=data)
         return r.json()
+
+    def patch(self, endpoint, data):
+        headers = self.get_headers()
+        r = requests.patch(endpoint, headers=headers, json=data)
+        return r.json()
     
     def delete(self, endpoint):
         headers = self.get_headers()
@@ -211,27 +216,48 @@ if __name__ == "__main__":
     #data = client.detail("http://localhost:8000/api/chatbot/7/") 
     
     # create new bot
-    #'''
+    
+    '''
     data = client.create("http://localhost:8000/api/chatbot/", 
                          data={
-                             "name": "FloristBot",
+                             "name": "DemoPizzaBot",
                              "social_media_type": "instagram",
-                             "description":"Point-of-sales bot for buying flowers",
+                             "description":"Pizza Bot",
                              "chatbot_intents": [
                                 {
-                                    "name": "purchase intent",
-                                    "utterances": [{"content":"Can I buy some flowers?"}, {"content":"I want to buy flowers"}],
-                                    "slots": [{"content":"What kind of flowers do u want?"}],
+                                    "name": "purchase",
+                                    "utterances": [{"content":"Can I buy pizzas?"}, {"content":"I want to order pizza"}],
+                                    "slots": [
+                                        {
+                                            "name": "size",
+                                            "content":"What size of pizza?",
+                                            "options":"small,medium,large"
+                                        },
+                                        {
+                                            "name": "flavour",
+                                            "content":"What flavour for the {size} pizza?",
+                                            "options":"pepperoni,hawaiian,veggie"
+                                        },
+                                    ],
                                 },
                                 {
-                                    "name": "faq intent",
-                                    "utterances": [{"content":"How long is shipping time"}, {"content":"How long will it take to ship"}],
-                                    "slots": [{"content":"Shipping time for now is estimated to be 2 weeks"}],
+                                    "name": "faq",
+                                    "utterances": [{"content":"How long will it take?"}, {"content":"How long is delivery?"}],
+                                    "slots": [
+                                        {
+                                            "name": "location",
+                                            "content":"Where is your location?",
+                                            "options":"NUS, NTU"
+                                        },
+                                    ],
                                 }
                             ]
                             }
                          ) 
-    #'''
+    '''
+
+    # BUILD bot (AWS LexV2 call)
+    data = client.patch("http://localhost:8000/api/chatbot/1/build/", data={"bot_status":True})
 
     # update bot 
     #data = client.update("http://localhost:8000/api/chatbot/7/update/", data={"name": "New bot name", "social_media_type":"instagram", "content":"asdfgh"})

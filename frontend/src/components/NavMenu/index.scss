@@ -7,7 +7,7 @@
     left: 0;
     top: 0;
     width: 100vw;
-    background-color: #fff;
+    background-color: rgb(0, 0, 0);
     height: 100px;
     border-bottom: 1px solid rgb(238, 233, 233);
   }
@@ -37,7 +37,7 @@
     height: 2px;
     width: 27px;
     position: relative;
-    background-color: black;
+    background-color: white;
     z-index: -1;
   }
   
@@ -48,7 +48,7 @@
     height: 100%;
     width: 100%;
     left: 0;
-    background-color: black;
+    background-color: white;
     transition: all 0.3s linear;
   }
   
@@ -84,7 +84,7 @@
       height 0.3s ease-in-out;
     position: fixed;
     width: 100vw;
-    background-color: white;
+    background-color: black;
   }
   
   .dropdown-list.active {
@@ -109,13 +109,13 @@
     height: 85px;
     padding-left: 30px;
     font-size: 1em;
-    border-bottom: 1px solid #e2e6e8;
+    border-bottom: 1px solid black;
     cursor: pointer;
     color: #000;
   }
   
   .vertical-tab:hover {
-    background-color: #f7f7f7;
+    background-color: black;
   }
   
   .horizontal-tab,
@@ -132,7 +132,7 @@
     .horizontal-tab {
       margin: 0 30px;
       cursor: pointer;
-      color: #000000;
+      color: white;
       position: relative;
       font-size: 1.1em;
     }
@@ -150,7 +150,7 @@
       width: 0%;
       content: ".";
       color: transparent;
-      background: #000000;
+      background: white;
       height: 1px;
       transition: all 0.4s;
       z-index: 999;
