@@ -17,6 +17,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import MultipleValueTextInput from 'react-multivalue-text-input';
 
 import { useState, useEffect } from 'react';
 import Popup from './Popup';
@@ -197,7 +198,7 @@ export default function CreateBotPage() {
             </div>
         </div> */}
           
-          <Box component="form" noValidate onSubmit={postData} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={postData} sx={{ mt: 12 }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
                 <TextField
@@ -290,6 +291,19 @@ export default function CreateBotPage() {
                   autoComplete="utterance 1"
                   onChange = {(e) => setFirstResponse(e.target.value)}
                 />
+              </Grid>
+              <Grid item xs = {11}>
+              <MultipleValueTextInput
+                style = {{height: '65px', width: '500px', borderRadius: '5px', borderWidth: 'thin', fontSize: '15px'}}
+                onItemAdded={(item, allItems) => console.log(`Item added: ${item}`)}
+                onItemDeleted={(item, allItems) => console.log(`Item removed: ${item}`)}
+                label="Items"
+                name="item-input"
+                placeholder="Enter selections that user can choose from."
+                className = 'multiple-select'
+                deleteButton={<span>x</span>}
+
+              />
               </Grid>
               <Grid item xs={12}>
                 <TextField
