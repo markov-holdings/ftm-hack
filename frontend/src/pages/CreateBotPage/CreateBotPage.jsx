@@ -526,17 +526,17 @@ export default function CreateBotPage() {
               />
               {/* <p>Submit</p> */}
               {isOpen && <Popup
-                content={<>
-                  <b>Bot is being created</b>
-                  <p>Intent and Utterances has been successfully sent to the database.</p>
-                  <Grid item>
-                <Link href="../user/videos" variant="body2">
-                  {"Acknowledged"}
-                </Link>
-              </Grid>
-                </>}
-                handleClose={togglePopup}
-              />}
+              //   content={<>
+              //     <b>Bot is being created</b>
+              //     <p>Intent and Utterances has been successfully sent to the database.</p>
+              //     <Grid item>
+              //   <Link href="../user/videos" variant="body2">
+              //     {"Acknowledged"}
+              //   </Link>
+              // </Grid>
+              //   </>}
+              //   handleClose={togglePopup}
+               />}
             </div>
             {/* <Button
               type="submit"
