@@ -17,6 +17,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import MultipleValueTextInput from 'react-multivalue-text-input';
 
 import { useState, useEffect } from 'react';
 import Popup from './Popup';
@@ -163,7 +164,7 @@ export default function CreateBotPage() {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 2,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -197,7 +198,7 @@ export default function CreateBotPage() {
             </div>
         </div> */}
           
-          <Box component="form" noValidate onSubmit={postData} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={postData} sx={{ mt: 12 }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
                 <TextField
@@ -231,7 +232,7 @@ export default function CreateBotPage() {
                   required
                   fullWidth
                   id="intent"
-                  label="First Intent"
+                  label="Action 1"
                   name="intent1"
                   autoComplete="intent1"
                   onChange = {(e) => setFirstIntent(e.target.value)}
@@ -249,7 +250,7 @@ export default function CreateBotPage() {
                   required
                   fullWidth
                   id="utterance"
-                  label="First Utterance for intent 1"
+                  label="Sample Trigger"
                   name="utterance 1"
                   autoComplete="utterance 1"
                   onChange = {(e) => setFirstUtteranceFirstIntent(e.target.value)}
@@ -267,57 +268,39 @@ export default function CreateBotPage() {
                   required
                   fullWidth
                   id="utterance"
-                  label="Second Utterance for intent 1"
+                  label="Sample Trigger"
                   name="utterance 1"
                   autoComplete="utterance 1"
                   onChange = {(e) => setSecondUtteranceFirstIntent(e.target.value)}
                 />
-              </Grid>
-                            <Grid item xs={1}>
-                <TextField
-                  disabled
-                  id="outlined-disabled"
-                  label=""
-                />
-              </Grid>
-              <Grid item xs={11}>
-                <TextField
-                  required
-                  fullWidth
-                  id="utterance"
-                  label="Response"
-                  name="utterance 1"
-                  autoComplete="utterance 1"
-                  onChange = {(e) => setFirstResponse(e.target.value)}
-                />
+              
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  id="intent"
-                  label="Second Intent"
-                  name="intent2"
-                  autoComplete="intent2"
-                  onChange = {(e) => setSecondIntent(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={1}>
-                <TextField
-                  disabled
-                  id="outlined-disabled"
-                  label=""
-                />
-              </Grid>
-              <Grid item xs={11}>
-                <TextField
-                  required
-                  fullWidth
                   id="utterance"
-                  label="First Utterance for intent 2"
+                  label="Response 1"
                   name="utterance 1"
                   autoComplete="utterance 1"
-                  onChange = {(e) => setFirstUtteranceSecondIntent(e.target.value)}
+                  onChange = {(e) => setFirstResponse(e.target.value)}
+                />
+              </Grid>
+                <Grid item xs={1}>
+                <TextField
+                  disabled
+                  id="outlined-disabled"
+                  label=""
+                />
+                </Grid>
+              <Grid item xs={11}>
+                <TextField
+                  required
+                  fullWidth
+                  id="utterance"
+                  label="Name"
+                  name="utterance 1"
+                  autoComplete="utterance 1"
                 />
               </Grid>
               <Grid item xs={1}>
@@ -326,36 +309,193 @@ export default function CreateBotPage() {
                   id="outlined-disabled"
                   label=""
                 />
-              </Grid>
+                </Grid>
               <Grid item xs={11}>
                 <TextField
                   required
                   fullWidth
                   id="utterance"
-                  label="Second Utterance for intent 2"
-                  name="utterance 2"
+                  label="Response Message"
+                  name="utterance 1"
                   autoComplete="utterance 1"
-                  onChange = {(e) => setSecondUtteranceSecondIntent(e.target.value)}
                 />
               </Grid>
-                            <Grid item xs={1}>
+              <Grid item xs={1}>
                 <TextField
                   disabled
                   id="outlined-disabled"
                   label=""
                 />
+                </Grid>
+              <Grid item xs = {11}>
+              <MultipleValueTextInput
+                style = {{height: '60px', width: '366px', borderRadius: '5px', borderWidth: 'thin', fontSize: '15px'}}
+                onItemAdded={(item, allItems) => console.log(`Item added: ${item}`)}
+                onItemDeleted={(item, allItems) => console.log(`Item removed: ${item}`)}
+                name="item-input"
+                placeholder="Response choices"
+                className = 'multiple-select'
+                deleteButton={<span>x</span>}
+
+              />
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="utterance"
+                  label="Response 2"
+                  name="utterance 1"
+                  autoComplete="utterance 1"
+                  onChange = {(e) => setFirstResponse(e.target.value)}
+                />
+              </Grid>
+                <Grid item xs={1}>
+                <TextField
+                  disabled
+                  id="outlined-disabled"
+                  label=""
+                />
+                </Grid>
               <Grid item xs={11}>
                 <TextField
                   required
                   fullWidth
                   id="utterance"
-                  label="Response"
-                  name="utterance 2"
+                  label="Name"
+                  name="utterance 1"
                   autoComplete="utterance 1"
-                  onChange = {(e) => setSecondResponse(e.target.value)}
                 />
               </Grid>
+              <Grid item xs={1}>
+                <TextField
+                  disabled
+                  id="outlined-disabled"
+                  label=""
+                />
+                </Grid>
+              <Grid item xs={11}>
+                <TextField
+                  required
+                  fullWidth
+                  id="utterance"
+                  label="Response Message"
+                  name="utterance 1"
+                  autoComplete="utterance 1"
+                />
+              </Grid>
+              <Grid item xs={1}>
+                <TextField
+                  disabled
+                  id="outlined-disabled"
+                  label=""
+                />
+                </Grid>
+              <Grid item xs = {11}>
+              <MultipleValueTextInput
+                style = {{height: '60px', width: '366px', borderRadius: '5px', borderWidth: 'thin', fontSize: '15px'}}
+                onItemAdded={(item, allItems) => console.log(`Item added: ${item}`)}
+                onItemDeleted={(item, allItems) => console.log(`Item removed: ${item}`)}
+                name="item-input"
+                placeholder="Response choices"
+                className = 'multiple-select'
+                deleteButton={<span>x</span>}
+
+              />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="utterance"
+                  label="Response 3"
+                  name="utterance 1"
+                  autoComplete="utterance 1"
+                  onChange = {(e) => setFirstResponse(e.target.value)}
+                />
+              </Grid>
+                <Grid item xs={1}>
+                <TextField
+                  disabled
+                  id="outlined-disabled"
+                  label=""
+                />
+                </Grid>
+              <Grid item xs={11}>
+                <TextField
+                  required
+                  fullWidth
+                  id="utterance"
+                  label="Name"
+                  name="utterance 1"
+                  autoComplete="utterance 1"
+                />
+              </Grid>
+              <Grid item xs={1}>
+                <TextField
+                  disabled
+                  id="outlined-disabled"
+                  label=""
+                />
+                </Grid>
+              <Grid item xs={11}>
+                <TextField
+                  required
+                  fullWidth
+                  id="utterance"
+                  label="Response Message"
+                  name="utterance 1"
+                  autoComplete="utterance 1"
+                />
+              </Grid>
+              <Grid item xs={1}>
+                <TextField
+                  disabled
+                  id="outlined-disabled"
+                  label=""
+                />
+                </Grid>
+              <Grid item xs = {11}>
+              <MultipleValueTextInput
+                style = {{height: '60px', width: '366px', borderRadius: '5px', borderWidth: 'thin', fontSize: '15px'}}
+                onItemAdded={(item, allItems) => console.log(`Item added: ${item}`)}
+                onItemDeleted={(item, allItems) => console.log(`Item removed: ${item}`)}
+                name="item-input"
+                placeholder="Response choices"
+                className = 'multiple-select'
+                deleteButton={<span>x</span>}
+
+              />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="utterance"
+                  label="Confirmation"
+                  name="utterance 1"
+                  autoComplete="utterance 1"
+                  onChange = {(e) => setFirstResponse(e.target.value)}
+                />
+              </Grid>
+                <Grid item xs={1}>
+                <TextField
+                  disabled
+                  id="outlined-disabled"
+                  label=""
+                />
+                </Grid>
+              <Grid item xs={11}>
+                <TextField
+                  required
+                  fullWidth
+                  id="utterance"
+                  label="Confirmation message"
+                  name="utterance 1"
+                  autoComplete="utterance 1"
+                />
+              </Grid>
+              
               {/* <Grid item xs={12}>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
@@ -371,8 +511,12 @@ export default function CreateBotPage() {
               
               
             </Grid>
-            <div>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', paddingTop: '10px'}}>
+            <button style ={{backgroundColor: 'black', color: 'white', borderRadius: '10px', padding: '10px 20px', fontSize: '15px'}}>Add more Actions</button>
+          </div>
+            <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'right', paddingTop: '20px'}}>
               <input
+              style ={{backgroundColor: 'black', color: 'white', borderRadius: '10px', padding: '10px 20px', fontSize: '20px'}}
                 type="submit"
                 fullWidth
               variant="contained"
@@ -382,17 +526,17 @@ export default function CreateBotPage() {
               />
               {/* <p>Submit</p> */}
               {isOpen && <Popup
-                content={<>
-                  <b>Bot is being created</b>
-                  <p>Intent and Utterances has been successfully sent to the database.</p>
-                  <Grid item>
-                <Link href="../user/videos" variant="body2">
-                  {"Acknowledged"}
-                </Link>
-              </Grid>
-                </>}
-                handleClose={togglePopup}
-              />}
+              //   content={<>
+              //     <b>Bot is being created</b>
+              //     <p>Intent and Utterances has been successfully sent to the database.</p>
+              //     <Grid item>
+              //   <Link href="../user/videos" variant="body2">
+              //     {"Acknowledged"}
+              //   </Link>
+              // </Grid>
+              //   </>}
+              //   handleClose={togglePopup}
+               />}
             </div>
             {/* <Button
               type="submit"

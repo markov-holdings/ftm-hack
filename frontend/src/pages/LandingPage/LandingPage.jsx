@@ -16,15 +16,12 @@ const LandingPage = () => {
       <NavMenu tabs={tabs} />
       <div className="landPageBody">
         <div className="landPageBodyItem left">
-          <div>Welcome to 9i Holdings</div>
-          <div>DO WHAT INSPIRES</div>
-          <div>
-            Automate everything else
-          </div>
+          <div>WELCOME TO 9I HOLDINGS</div>
+          <div>NO CODE CHATBOT BUILDER</div>
         </div>
-        <div className="landPageBodyItem right">
+        {/* <div className="landPageBodyItem right">
           <img src={img} alt="landing page" />
-        </div>
+        </div> */}
       </div>
     </div>
   );
